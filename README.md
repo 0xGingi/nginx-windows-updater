@@ -3,7 +3,7 @@ Simple Application written in Rust that automatically updates nginx on windows
 
 ## Info
 
-* Assumes Nginx in installed at C:\nginx\nginx.exe
+* Assumes Nginx is installed at C:\nginx\nginx.exe
 
 * Assumes you have a Windows Service named "Nginx"
 
