@@ -1,0 +1,15 @@
+[package]
+name = "windows_nginx_updater"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+reqwest = { version = "0.12.4", features = ["json"] }
+regex = "1"
+tokio = { version = "1", features = ["full"] }
+schedule_recv = "0.1.0"
+zip = "2.1.1"
+
+[[bin]]
+name = "windows_nginx_updater"
+path = "src/main.rs"
