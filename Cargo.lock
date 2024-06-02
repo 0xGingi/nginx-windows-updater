@@ -1651,7 +1651,7 @@ checksum = "db3c2bf3d13d5b658be73463284eaf12830ac9a26a90c717b7f771dfe97487bf"
 
 [[package]]
 name = "windows_nginx_updater"
-version = "1.0.0"
+version = "1.0.1"
 dependencies = [
  "regex",
  "reqwest",

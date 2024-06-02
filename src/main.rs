@@ -41,8 +41,18 @@ async fn check_version(client: &reqwest::Client, re: &Regex, url: &str) -> Resul
 
         println!("Latest version: {}, released on {}", version, date);
 
-        let last_version = fs::read_to_string("latest_version.txt").map_err(|err| format!("Failed to read latest_version.txt: {}", err))?;
-
+        let last_version = match fs::read_to_string("latest_version.txt") {
+            Ok(content) => content,
+            Err(err) => {
+                if err.kind() == std::io::ErrorKind::NotFound {
+                    fs::write("latest_version.txt", "")?;
+                    String::new()
+                } else {
+                    return Err(Box::new(std::io::Error::new(err.kind(), format!("Failed to read latest_version.txt: {}", err))));
+                }
+            }
+        };
+    
         if version != &last_version {
             fs::write("latest_version.txt", version)?;
             println!("New version detected: {}", version);
